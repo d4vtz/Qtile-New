@@ -1,7 +1,7 @@
 import shlex
 from subprocess import Popen, run
 
-from libqtile.command.base import expose_command
+# from libqtile.command.base import expose_command
 from libqtile.widget import base
 
 
@@ -109,6 +109,6 @@ class CheckUpdate(base.ThreadPoolText, Update):
         updates = "\n".join(self.updates)
         Popen(f"notify-send '{updates}'", shell=True)
 
-    @expose_command()
+    # @expose_command()
     def update_hook(self) -> None:
         self.poll()
