@@ -2,14 +2,7 @@ from pathlib import Path
 from libqtile.config import Key
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-from utils.functions import (
-    backlight,
-    resize_down,
-    resize_left,
-    resize_right,
-    resize_up,
-    float_to_front,
-)
+from utils.functions import backlight
 
 
 class KeysMode:
@@ -63,7 +56,7 @@ keys = [
     # Layouts
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle forward layout"),
     Key([mod, shift], "Tab", lazy.prev_layout(), desc="Toggle last layout"),
-    # focus, move windows and screens
+    # focus windows
     Key(
         [control],
         mode.down,
@@ -85,6 +78,7 @@ keys = [
         lazy.layout.right(),
         desc="Move focus right in current stack pane",
     ),
+    #  Move windows
     Key(
         [control, shift],
         mode.down,
@@ -113,34 +107,29 @@ keys = [
         lazy.layout.move_right(),
         desc="Move windows right in the current stack",
     ),
+    # Screens
     Key(
         [mod],
         "x",
         lazy.next_screen(),
         desc="Move focus to next monitor",
-    ),  # TODO find a better hotkey
-    Key([mod, control], mode.down, lazy.layout.flip_down(), desc="Flip layout down"),
-    Key([mod, control], mode.up, lazy.layout.flip_up(), desc="Flip layout up"),
+    ),
+    # window settings
     Key(
-        [mod, control],
-        mode.left,
-        lazy.layout.flip_left(),
-        lazy.layout.swap_column_left(),
-        desc="Flip layout left",
+        [mod, alt],
+        mode.up,
+        lazy.layout.grow(),
+        desc="Resize window up",
     ),
     Key(
-        [mod, control],
-        mode.right,
-        lazy.layout.flip_right(),
-        lazy.layout.swap_column_left(),
-        desc="Flip layout right",
+        [mod, alt],
+        mode.down,
+        lazy.layout.shrink(),
+        desc="Resize window down",
     ),
-    # window resizing
-    Key([mod, alt], mode.left, resize_left, desc="Resize window left"),
-    Key([mod, alt], mode.right, resize_right, desc="Resize window Right"),
-    Key([mod, alt], mode.up, resize_up, desc="Resize windows upward"),
-    Key([mod, alt], mode.down, resize_down, desc="Resize windows downward"),
     Key([mod, alt], "n", lazy.layout.normalize(), desc="Normalize window size ratios"),
+    Key([mod, alt], "b", lazy.layout.maximize(), desc="Maximize window layout"),
+    Key([mod, shift], "space", lazy.layout.flip(), desc="change side of main panel"),
     # window states
     Key(
         [mod],
@@ -148,18 +137,16 @@ keys = [
         lazy.window.toggle_maximize(),
         desc="Toggle window between minimum and maximum sizes",
     ),
-    Key([mod, shift], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
+    Key([], "F11", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     Key(
         [mod],
         "i",
         lazy.window.toggle_floating(),
         desc="Toggle floating mode for a window",
     ),
-    Key([], "F11", lazy.window.toggle_fullscreen()),
     # Floating window management
-    Key([mod], "space", lazy.window.toggle_floating()),
-    Key([mod], "c", lazy.window.center()),
-    Key([mod], "f", lazy.function(float_to_front)),
+    Key([mod], "space", lazy.window.toggle_floating(), desc="Toggle floating window"),
+    Key([mod], "c", lazy.window.center(), desc="Center floating window"),
     # program launches
     # Key(
     #     [mod],
@@ -243,7 +230,7 @@ def show_keys():
 
         key_help += "{:<25} {}".format(mods, k.desc + "\n")
 
-    return key_help
+    return key_help[:-1]
 
 
 keys.extend(

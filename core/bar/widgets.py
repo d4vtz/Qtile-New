@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 
-#from extras.amdgpu import Amdgpu
+# from extras.amdgpu import Amdgpu
 from extras.clock import Clock
 from extras.groupbox import GroupBox
 from extras.updates import CheckUpdate
@@ -10,6 +10,7 @@ from libqtile.lazy import lazy
 
 color = Optional[str]
 from core.settings import Colors
+
 # from libqtile import widget
 from libqtile.widget import TextBox
 from qtile_extras import widget
@@ -165,7 +166,7 @@ class Widget:
             widget.Spacer(),
             self.window_name(),
             widget.Spacer(),
-            #Amdgpu(),
+            # Amdgpu(),
             widget.Systray(padding=8),
             # self.status_notifier(),
             self.sep(),

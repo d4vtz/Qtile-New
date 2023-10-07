@@ -13,4 +13,3 @@ class Settings:
     screens = screens
     widget_defaults = widget_defaults
     hooks = hooks
-    
