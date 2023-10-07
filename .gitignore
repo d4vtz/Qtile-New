@@ -67,3 +67,4 @@ docs/_static/screenshots/
 
 # ViM tags
 /tags
+core/__pycache__/keys.cpython-311.pyc
