@@ -1,0 +1,4 @@
+gscreenshot
+xclip
+playerctl
+brightnessctl

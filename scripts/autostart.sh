@@ -1,9 +1,7 @@
 #!/bin/bash
 
-export PATH="/home/dani/.local/bin:$PATH"
-
 udiskie -a &
-picom --experimental-backend &
+picom &
 dusnt &
 eww daemon &
 volctl &

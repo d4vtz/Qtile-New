@@ -4,15 +4,6 @@ from utils.functions import focus_next_group, focus_previous_group
 
 from .keys import keys, mod, shift
 
-workspace_names = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-]
 groups = [
     Group(
         name="Home",

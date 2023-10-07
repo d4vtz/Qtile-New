@@ -13,6 +13,4 @@ class Settings:
     screens = screens
     widget_defaults = widget_defaults
     hooks = hooks
-
-    def __init__(self) -> None:
-        pass
+    
