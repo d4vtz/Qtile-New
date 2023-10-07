@@ -2,7 +2,7 @@ from core.bar.widgets import Widget
 from libqtile import bar
 from libqtile.config import Screen
 
-from .settings import colors, wallpaper_main
+from .settings import colors, wallpaper
 
 widgets = Widget()
 widget_defaults = dict(
@@ -14,7 +14,6 @@ extension_defaults = widget_defaults.copy()
 
 
 def create_bar():
-    """Create top bar, defined as function to allow duplication in other monitors"""
     widget = Widget()
     return bar.Bar(
         widget.widgets,
@@ -26,7 +25,7 @@ def create_bar():
 
 screens = [
     Screen(
-        wallpaper=wallpaper_main,
+        wallpaper=wallpaper,
         wallpaper_mode="fill",
         top=create_bar(),
         bottom=bar.Gap(2),

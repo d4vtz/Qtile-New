@@ -1,3 +1,8 @@
+# General
+wallpaper = "~/.config/qtile/wallpapers/wallpaper.png"
+vimmode = False
+
+
 class Colors:
     black = "#2E3440"
     white = "#ECEFF4"
@@ -46,42 +51,6 @@ colors = [
     "#A3BE8C",  # nord14
     "#B48EAD",  # nord15
 ]
-# Workspaces with names
-# workspace_names = [
-#     " WEB",
-#     " DEV",
-#     " SYS",
-#     " DISC",
-#     " MUS",
-#     " DIR",
-#     " NOT",
-# ]
-
-# Nerd Font icons without names
-# workspace_names = [
-#     "",
-#     "",
-#     "",
-#     "ﭮ",
-#     "",
-#     "",
-#     "",
-# ]
-
-# Without names
-workspace_names = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-]
-
-# General
-wallpaper_main = "~/.config/qtile/wallpapers/wallpaper.png"
-wallpaper_sec = "~/.config/qtile/wallpapers/hk1.jpg"
 
 # Hardware
 network = "wlp2s0"  # network interface name

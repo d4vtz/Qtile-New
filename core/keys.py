@@ -4,6 +4,8 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from utils.functions import backlight
 
+from .settings import vimmode
+
 
 class KeysMode:
     def __init__(self, vim: bool = True) -> None:
@@ -25,7 +27,7 @@ control = "control"
 shift = "shift"
 alt = "mod1"
 
-mode = KeysMode(vim=True)
+mode = KeysMode(vimmode)
 
 terminal = guess_terminal()
 home = Path.home().as_posix()
