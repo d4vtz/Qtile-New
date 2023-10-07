@@ -7,37 +7,33 @@ from .keys import keys, mod, shift
 groups = [
     Group(
         name="Home",
-        label=" ",
+        label="1",
         matches=[Match(wm_class="obsidian")],
     ),
     Group(
         name="Web",
-        label=" ",
+        label="2",
         matches=[Match(wm_class="google-chrome")],
     ),
     Group(
         name="Code",
-        label=" ",
-        matches=[Match(wm_class="code"), Match(wm_class="kitty")],
-    ),  #   
-    Group(
-        name="Physic",
-        label=" ",
-        matches=[Match(wm_class="Zathura")],
-        layout="looking good",
+        label="3",
+        matches=[Match(wm_class="code")],
     ),
     Group(
-        name="Music",
-        label=" ",
+        name="Physic",
+        label="4",
+        matches=[Match(wm_class="Zathura")],
+        layout="max",
     ),
     Group(
         name="Media",
-        label=" ",
+        label="5",
     ),
-    Group(name="Social", label=" ", matches=[Match(wm_class="telegram-desktop")]),
+    Group(name="Social", label="6", matches=[Match(wm_class="telegram-desktop")]),
     Group(
         name="System",
-        label=" ",
+        label="7",
         matches=[Match(wm_class="pavucontrol")],
     ),
 ]
