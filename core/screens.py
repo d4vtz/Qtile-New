@@ -1,4 +1,4 @@
-from core.bar.widgets import Widget
+from core.widgets import Widget
 from libqtile import bar
 from libqtile.config import Screen
 

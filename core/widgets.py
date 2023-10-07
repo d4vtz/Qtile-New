@@ -1,7 +1,6 @@
 import os
+from pathlib import Path
 from typing import Optional
-
-# from extras.amdgpu import Amdgpu
 from extras.clock import Clock
 from extras.groupbox import GroupBox
 from extras.updates import CheckUpdate
@@ -15,16 +14,18 @@ from core.settings import Colors
 from libqtile.widget import TextBox
 from qtile_extras import widget
 
+home = Path.home().as_posix()
+
 
 class Widget:
     def __init__(self) -> None:
         self.colors = Colors()
 
-    def sep(self, padding: int = 8) -> TextBox:
+    def sep(self, padding: int = 2) -> TextBox:
         return TextBox(
             foreground=self.colors.gray,
             padding=padding,
-            font="Iosevka Nerd Font",
+            font="VictorMono Nerd Font",
             fontsize=20,
             text="",
         )
@@ -32,17 +33,16 @@ class Widget:
     def logo(self) -> TextBox:
         return TextBox(
             foreground=self.colors.cyan,
-            mouse_callbacks={"Button1": lazy.restart()},
-            padding=12,
-            font="Iosevka Nerd Font",
+            mouse_callbacks={"Button1": lazy.spawn(f"{home}/.local/bin/launcher.sh")},
+            font="VictorMono Nerd Font",
             fontsize=16,
-            text=" ",
+            text="",
         )
 
     def groups(self) -> GroupBox:
         return GroupBox(
             font="Iosevka Nerd Font",
-            fontsize=16,
+            fontsize=14,
             colors=[
                 self.colors.home,
                 self.colors.web,
@@ -61,7 +61,6 @@ class Widget:
             urgent_border=self.colors.alert,
             inactive=self.colors.inactive,
             disable_drag=True,
-            padding_x=3,
             center_aligned=True,
         )
 
@@ -127,7 +126,7 @@ class Widget:
             foreground=self.colors.red,
             font="Iosevka Nerd Font",
             fontsize=16,
-            mouse_callbacks={"Button1": lazy.restart()},
+            mouse_callbacks={"Button1": lazy.spawn(f"{home}/.local/bin/powermenu.sh")},
             text=" ",
         )
 
@@ -161,12 +160,10 @@ class Widget:
             self.logo(),
             self.sep(),
             self.gen_current_layout(),
-            self.sep(),
-            self.groups(),
-            widget.Spacer(),
             self.window_name(),
             widget.Spacer(),
-            # Amdgpu(),
+            self.groups(),
+            widget.Spacer(),
             widget.Systray(padding=8),
             # self.status_notifier(),
             self.sep(),
