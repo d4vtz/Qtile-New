@@ -41,8 +41,8 @@ class Widget:
 
     def groups(self) -> GroupBox:
         return GroupBox(
-            font="Iosevka Nerd Font",
-            fontsize=14,
+            font="VictorMono Nerd Font",
+            fontsize=16,
             colors=[
                 self.colors.home,
                 self.colors.web,
