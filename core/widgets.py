@@ -7,10 +7,11 @@ from extras.updates import CheckUpdate
 from libqtile.bar import CALCULATED
 from libqtile.lazy import lazy
 
+# from extras.keyboardlayout import Keyboardlayout
+
 color = Optional[str]
 from core.settings import Colors
 
-# from libqtile import widget
 from libqtile.widget import TextBox
 from qtile_extras import widget
 
@@ -20,15 +21,6 @@ home = Path.home().as_posix()
 class Widget:
     def __init__(self) -> None:
         self.colors = Colors()
-
-    def sep(self, padding: int = 2) -> TextBox:
-        return TextBox(
-            foreground=self.colors.gray,
-            padding=padding,
-            font="VictorMono Nerd Font",
-            fontsize=20,
-            text="",
-        )
 
     def logo(self) -> TextBox:
         return TextBox(
@@ -158,15 +150,15 @@ class Widget:
     def widgets(self):
         return [
             self.logo(),
-            self.sep(),
             self.gen_current_layout(),
             self.window_name(),
             widget.Spacer(),
             self.groups(),
             widget.Spacer(),
             widget.Systray(padding=8),
-            # self.status_notifier(),
-            self.sep(),
+            self.status_notifier(),
+            widget.Volume(cardid=0, theme_path="/home/medicendav/images_svg"),
+            # Keyboardlayout(theme_path="/home/medicendav/images_svg"),
             widget.KeyboardLayout(
                 configured_keyboards=["us", "us intl"],
                 display_map={"us": "us", "us intl": "US"},
@@ -175,6 +167,5 @@ class Widget:
             ),
             *self.updates(),
             *self.clock(),
-            self.sep(),
             self.exit(),
         ]
